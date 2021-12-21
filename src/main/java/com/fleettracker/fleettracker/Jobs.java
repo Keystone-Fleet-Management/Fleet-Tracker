@@ -13,33 +13,40 @@ public class Jobs {
     @Id @GeneratedValue
     private Integer jobID;
 
-    @NotBlank
-    @NotNull
-    @Size(min=5, max = 100)
+    @NotBlank @NotNull @Size(min=5, max = 50)
+    private String clientName;
+
+    @NotBlank @NotNull @Size(min=5, max = 100)
     private String startLocation;
 
     @NotBlank @NotNull @Size(min=5, max = 100)
     private String endLocation;
 
-    @NotBlank @NotNull
     private Date dateCreated;
     private Time startTime;
     private Time endTime;
     private boolean isCompleted;
 
-    public Jobs(String startLocation, String endLocation, Date dateCreated) {
+    public Jobs(String clientName, String startLocation, String endLocation, Date dateCreated) {
+        this.clientName = clientName;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
-        this.dateCreated = dateCreated;
+        this.dateCreated = new Date();
         this.isCompleted = false;
     }
 
-    public Jobs(){
-        this("None", "None", new Date());
-    }
+    public Jobs(){}
 
     public Integer getJobID() {
         return jobID;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public String getStartLocation() {
