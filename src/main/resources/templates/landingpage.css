@@ -1,0 +1,167 @@
+#newJobHeader {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+form {
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+}
+
+input {
+  align-items: center;
+}
+
+
+.formDiv {
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  height: 60px;
+}
+
+#bodyDiv {
+    background: rgb(126, 166, 212);
+    margin: 30px;
+}
+
+
+
+#btn {
+  font-size: 15px;
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: Sans-Serif;
+  margin: 0;
+}
+
+.menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #232323;
+  color: #cdcdcd;
+  padding: 20px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+
+.menu-container a {
+  text-decoration: none;
+  color: #742222;
+  transition: color 0.3s ease;
+}
+
+
+.menu-container input {
+  display: block;
+  width: 35px;
+  height: 25px;
+  margin: 0;
+  position: absolute;
+}
+
+.menu-container span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+
+}
+
+
+.menu ul {
+  list-style: none;
+}
+
+.menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/* mobile styles */
+@media only screen and (max-width: 767px) {
+  .menu-container {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .menu-logo {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .menu-logo img {
+    max-height: 30px;
+  }
+
+  .menu {
+    position: absolute;
+    box-sizing: border-box;
+    width: 300px;
+    right: -300px;
+    top: 0;
+    margin: -20px;
+    padding: 75px 50px 50px;
+    background: #cdcdcd;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    transform-origin: 0% 0%;
+    transform: translateX(0%);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  .menu-container input:checked ~ .menu {
+    transform: translateX(-100%);
+  }
+}
+
+/* desktop styles */
+@media only screen and (min-width: 768px) {
+  .menu-container {
+    width: 100%;
+  }
+
+  .menu-container a {
+    color: #cdcdcd;
+  }
+
+  .menu-container input {
+    display: none;
+  }
+
+  .menu-container span {
+    display: none;
+  }
+
+  .menu {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu ul {
+    display: flex;
+    padding: 0;
+  }
+
+  .menu li {
+    padding: 0 20px;
+  }
+}
