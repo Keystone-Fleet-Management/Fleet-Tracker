@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AddJobsController {
 
     @GetMapping
-    public String landingpage() {
-        return "landingpage";
+    public String home() {
+        return "home";
     }
 }
