@@ -7,7 +7,6 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
 @MappedSuperclass
 public class User {
 

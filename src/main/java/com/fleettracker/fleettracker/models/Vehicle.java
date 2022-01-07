@@ -10,7 +10,6 @@ public class Vehicle{
     @GeneratedValue @Id
     private int vehicleId;
     private String vehiclePlate;
-    @OneToOne
     private int driverId;
     private int mileage;
     private boolean isCheckedOut;

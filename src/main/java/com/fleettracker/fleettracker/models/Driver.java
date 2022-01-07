@@ -5,11 +5,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Driver extends User{
-    @OneToOne
     private int vehicleId;
-    @OneToOne
     private int jobId;
-
     private String location;
     private boolean onJob;
 
