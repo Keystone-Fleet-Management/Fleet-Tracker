@@ -1,6 +1,8 @@
-<script>
+
     window.addEventListener("load", function() {
        let form = document.querySelector("form");
+      //  console.log ("test");
+       let btn =  document.querySelector("button [id=btn]");
        btn.addEventListener("click", function(event) {
           
           //declair name phone start end date
@@ -47,4 +49,3 @@
  
        });
     });
- </script>
