@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org/">
 <!--META INFO-->
   <head>
 
@@ -222,23 +222,23 @@
     <form method="post">
   <div class="formDiv">
     Name/ID
-      <input required type="text"></input>
+      <input required type="text" th:field="${jobs.clientName}" />
   </div>
   <div class="formDiv">
           Phone Number
-      <input required type="text"></input>
+      <input required type="text" />
   </div>
   <div class="formDiv">
           Starting Location
-      <input required type="text"></input>
+      <input required type="text" th:field="${jobs.startLocation}" />
   </div>
   <div class="formDiv">
           Ending Location
-      <input required type="text"></input>
+      <input required type="text" th:field="${jobs.endLocation}" />
   </div>
   <div class="formDiv">
           Date
-      <input required type="text"></input>
+      <input required type="text" />
   </div>
     <script src="script.js"></script>
 

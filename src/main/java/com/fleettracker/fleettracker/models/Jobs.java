@@ -13,13 +13,13 @@ public class Jobs {
     @Id @GeneratedValue
     private Integer jobID;
 
-    @NotBlank @NotNull @Size(min=5, max = 50)
+    @NotBlank @NotNull @Size(min=4, max = 50)
     private String clientName;
 
-    @NotBlank @NotNull @Size(min=5, max = 100)
+    @NotBlank @NotNull @Size(min=4, max = 100)
     private String startLocation;
 
-    @NotBlank @NotNull @Size(min=5, max = 100)
+    @NotBlank @NotNull @Size(min=4, max = 100)
     private String endLocation;
 
     private Date dateCreated;
