@@ -1,6 +1,10 @@
 package com.fleettracker.fleettracker.controllers;
 
 import com.fleettracker.fleettracker.models.Jobs;
+import com.fleettracker.fleettracker.models.data.DriverRepository;
+import com.fleettracker.fleettracker.models.data.JobRepository;
+import com.fleettracker.fleettracker.models.data.VehicleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,7 +16,12 @@ import javax.validation.Valid;
 
 @Controller
 public class JobsController {
-
+    @Autowired
+    private JobRepository jobRepository;
+    @Autowired
+    private DriverRepository driverRepository;
+    @Autowired
+    private VehicleRepository vehicleRepository;
 
 
     @GetMapping("createjob")
@@ -23,9 +32,7 @@ public class JobsController {
 
     @PostMapping("createjob")
     public String processCreateJobForm(@ModelAttribute @Valid Jobs newJob, Errors errors){
-        if (errors.hasErrors()) {
-            return "createjob";
-        }
+        jobRepository.save(newJob);
         return "redirect:";
 
 
