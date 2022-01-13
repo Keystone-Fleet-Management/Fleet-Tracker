@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Create a New Job</title>
-<!--  figure out why it is not reading the style sheet-->
-  <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
-  <style>
-             #newJobHeader {
+    <meta charset="UTF-8">
+    <title>Login</title>
+<!--    TODO (lauren): add styling-->
+<!--    cant figure out why this isnt working-->
+   <link th:href="@{resources/static/main.css}" rel="stylesheet" />
+    <style>
+                 #newJobHeader {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
@@ -173,57 +174,46 @@
       padding: 0 20px;
     }
   }
-  </style>
+
+    </style>
 </head>
-<body>
-<!--needs a create job page title in controller-->
-<h1 th:text="${createJob}"></h1>
+    <body>
+    <nav class="menu-container">
 
-<div th:insert="navbar :: navbar">  </div>
-<!--&lt;!&ndash;NAV BAR&ndash;&gt;-->
-<!--<nav class="menu-container">-->
+        <h1 id="navHeader">Fleet Management</h1>
+        <!-- menu items -->
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="landingpage.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="createjob.html">
+                        Create Job
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html">
+                        Login
+                    </a>
+                </li>
+                <li>
+                    <a href="landingpage.html">
+                        Sample Link
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        <h1 th:text="${loginPage}"></h1>
 
-<!--  <h1 id="navHeader">Fleet Management</h1>-->
-<!--  &lt;!&ndash; menu items &ndash;&gt;-->
-<!--  <div class="menu">-->
-<!--    <ul>-->
-<!--      <li>-->
-<!--        <a href="landingpage.html">-->
-<!--          Home-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="createjob.html">-->
-<!--          Create Job-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="login.html">-->
-<!--          Login-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="landingpage.html">-->
-<!--          Sample Link-->
-<!--        </a>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</nav>-->
+        <input type="username" name="username" class="form-control" placeholder="Username" required autofocus/>
+        <input type="password" name="password" class="form-control" placeholder="Password" required />
 
-<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
-
-  <p>Job ID: <input type="text" th:field="${jobID}" /></p>
-  <p>Client Name: <input type="text" th:field="${clientName}" /></p>
-  <p>Phone Number: <input type="text" th:field="${phoneNumber}" /></p>
-  <p>Starting Location: <input type="text" th:field="${startLocation}" /></p>
-  <p>Ending Location: <input type="text" th:field="${endLocation}" /></p>
-  <p>Job Date: <input type="text" th:field="${dateCreated}" /></p>
-  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-
-</form>
-
-
+<!--        TODO (lauren): make "clear" actually work-->
+        <p><input type="submit" value="Login" /> <input type="submit" value="Clear" /></p>
 
 </body>
 </html>
