@@ -29,11 +29,10 @@ public class Jobs {
 
     public Jobs(){}
 
-    public Jobs(String clientName, String startLocation, String endLocation, Date dateCreated) {
+    public Jobs(String clientName, String startLocation, String endLocation) {
         this.clientName = clientName;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
-        this.dateCreated = new Date();
         this.isCompleted = false;
     }
 
