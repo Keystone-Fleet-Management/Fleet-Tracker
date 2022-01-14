@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-<!--    TODO (lauren): add styling-->
-<!--    cant figure out why this isnt working-->
-   <link th:href="@{resources/static/main.css}" rel="stylesheet" />
+    <!--    TODO (lauren): add styling-->
+    <!--    cant figure out why this isnt working-->
+    <link th:href="@{resources/static/main.css}" rel="stylesheet" />
     <style>
                  #newJobHeader {
     font-family: Helvetica, sans-serif;
@@ -176,44 +176,35 @@
   }
 
     </style>
-</head>
-    <body>
-    <nav class="menu-container">
+<body>
 
-        <h1 id="navHeader">Fleet Management</h1>
-        <!-- menu items -->
-        <div class="menu">
-            <ul>
-                <li>
-                    <a href="landingpage.html">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="createjob.html">
-                        Create Job
-                    </a>
-                </li>
-                <li>
-                    <a href="login.html">
-                        Login
-                    </a>
-                </li>
-                <li>
-                    <a href="landingpage.html">
-                        Sample Link
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-        <h1 th:text="${loginPage}"></h1>
+<!--NAV BAR-->
+<nav class="menu-container">
 
-        <input type="username" name="username" class="form-control" placeholder="Username" required autofocus/>
-        <input type="password" name="password" class="form-control" placeholder="Password" required />
+    <h1 th:text="${landingPage}"></h1>
 
-<!--        TODO (lauren): make "clear" actually work-->
-        <p><input type="submit" value="Login" /> <input type="submit" value="Clear" /></p>
+    <div th:insert="navbar :: navbar">  </div>
+
+<div>
+
+    <table>
+        <thead>
+        <tr>
+            <th> Vehicle ID </th>
+            <th> Status </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${vehicles.empty}">
+            <td colspan="2"> No Vehicles Available </td>
+        </tr>
+        <tr th:each="vehicle : ${vehicles}">
+            <td><span th:text="${vehicle.id}"> Vehicle </span></td>
+            <td><span th:text="${vehicle.status}"> Status </span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

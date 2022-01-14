@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<!--META INFO-->
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Create New Job</title>
-
-
-      <style>
-          #newJobHeader {
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Create a New Job</title>
+<!--  figure out why it is not reading the style sheet-->
+  <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
+  <style>
+             #newJobHeader {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
@@ -176,86 +173,57 @@
       padding: 0 20px;
     }
   }
+  </style>
+</head>
+<body>
+<!--needs a create job page title in controller-->
+<h1 th:text="${createJob}"></h1>
 
-      </style>
-  </head>
+<div th:insert="navbar :: navbar">  </div>
+<!--&lt;!&ndash;NAV BAR&ndash;&gt;-->
+<!--<nav class="menu-container">-->
 
+<!--  <h1 id="navHeader">Fleet Management</h1>-->
+<!--  &lt;!&ndash; menu items &ndash;&gt;-->
+<!--  <div class="menu">-->
+<!--    <ul>-->
+<!--      <li>-->
+<!--        <a href="landingpage.html">-->
+<!--          Home-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="createjob.html">-->
+<!--          Create Job-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="login.html">-->
+<!--          Login-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="landingpage.html">-->
+<!--          Sample Link-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
 
-  <body>
+<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
 
-    <!--NAV BAR-->
-    <nav class="menu-container">
+  <p>Job ID: <input type="text" th:field="${jobID}" /></p>
+  <p>Client Name: <input type="text" th:field="${clientName}" /></p>
+  <p>Phone Number: <input type="text" th:field="${phoneNumber}" /></p>
+  <p>Starting Location: <input type="text" th:field="${startLocation}" /></p>
+  <p>Ending Location: <input type="text" th:field="${endLocation}" /></p>
+  <p>Job Date: <input type="text" th:field="${dateCreated}" /></p>
+  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 
-   <h1 id="navHeader">Fleet Management</h1>
-        <!-- menu items -->
-        <div class="menu">
-          <ul>
-            <li>
-              <a href="/landingpage">
-                Home
-              </a>
-            </li>
-            <li>
-                <a href="createjob.html">
-                  Create Job
-                </a>
-              </li>
-              <li>
-                <a href="landingpage.html">
-                  Sample Link
-                </a>
-              </li>
-              <li>
-                <a href="/goodbye">
-                  Sign Out
-                </a>
-              </li>
-          </ul>
-        </div>
-      </nav>
-
-
-<!--CREATE NEW JOB-->
-<div id="bodyDiv"></br>
-    <h1 id="newJobHeader">Create New Job</h1>
-
-    <form method="post">
-  <div class="formDiv">
-    Name/ID
-      <input required type="text" th:field="${jobs.clientName}" />
-  </div>
-  <div class="formDiv">
-          Phone Number
-      <input required type="text" />
-  </div>
-  <div class="formDiv">
-          Starting Location
-      <input required type="text" th:field="${jobs.startLocation}" />
-  </div>
-  <div class="formDiv">
-          Ending Location
-      <input required type="text" th:field="${jobs.endLocation}" />
-  </div>
-  <div class="formDiv">
-          Date
-      <input required type="text" />
-  </div>
-    <script src="script.js"></script>
-
-      <div class="container">
-
-      <button id="btn" type="submit">Submit</button>
-
-      </div>
-    </form>
-    </br>
+</form>
 
 
-      <!--ALERT ON CLICK (DOESN'T ACTUALLY DO ANYTHING YET)-->
-      <script>
-        btn.addEventListener("click", function(){ alert("Submitted Successfully"); });
-      </script>
 
-    </div>
-  </body>
+</body>
 </html>

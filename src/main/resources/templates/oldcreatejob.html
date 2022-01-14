@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-<!--    TODO (lauren): add styling-->
-<!--    cant figure out why this isnt working-->
-   <link th:href="@{resources/static/main.css}" rel="stylesheet" />
-    <style>
-                 #newJobHeader {
+<html>
+<!--META INFO-->
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Create New Job</title>
+
+
+      <style>
+          #newJobHeader {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
@@ -175,45 +177,84 @@
     }
   }
 
-    </style>
-</head>
-    <body>
+      </style>
+  </head>
+
+
+  <body>
+
+    <!--NAV BAR-->
     <nav class="menu-container">
 
-        <h1 id="navHeader">Fleet Management</h1>
+   <h1 id="navHeader">Fleet Management</h1>
         <!-- menu items -->
         <div class="menu">
-            <ul>
-                <li>
-                    <a href="landingpage.html">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="createjob.html">
-                        Create Job
-                    </a>
-                </li>
-                <li>
-                    <a href="login.html">
-                        Login
-                    </a>
-                </li>
-                <li>
-                    <a href="landingpage.html">
-                        Sample Link
-                    </a>
-                </li>
-            </ul>
+          <ul>
+            <li>
+              <a href="landingpage.html">
+                Home
+              </a>
+            </li>
+            <li>
+                <a href="createjob.html">
+                  Create Job
+                </a>
+              </li>
+              <li>
+                <a href="landingpage.html">
+                  Sample Link
+                </a>
+              </li>
+              <li>
+                <a href="landingpage.html">
+                  Sample Link
+                </a>
+              </li>
+          </ul>
         </div>
-    </nav>
-        <h1 th:text="${loginPage}"></h1>
+      </nav>
 
-        <input type="username" name="username" class="form-control" placeholder="Username" required autofocus/>
-        <input type="password" name="password" class="form-control" placeholder="Password" required />
 
-<!--        TODO (lauren): make "clear" actually work-->
-        <p><input type="submit" value="Login" /> <input type="submit" value="Clear" /></p>
+<!--CREATE NEW JOB-->
+<div id="bodyDiv"></br>
+    <h1 id="newJobHeader">Create New Job</h1>
 
-</body>
+  <div class="formDiv">
+    <form type="text">Name/ID</form>
+      <input required type="text"></input>
+  </div>
+  <div class="formDiv">
+          <form type="text">Phone Number</form>
+      <input required type="text"></input>
+  </div>
+  <div class="formDiv">
+          <form type="text">Starting Location</form>
+      <input required type="text"></input>
+  </div>
+  <div class="formDiv">
+          <form type="text">Ending Location</form>
+      <input required type="text"></input>
+  </div>
+  <div class="formDiv">
+          <form type="text">Date</form>
+      <input required type="text"></input>
+  </div>
+    <script src="script.js"></script>
+    <form>
+      <div class="container">
+
+      <button id="btn" type="submit">Submit</button>
+
+
+      </div>
+    </br>
+
+
+      <!--ALERT ON CLICK (DOESN'T ACTUALLY DO ANYTHING YET)-->
+      <script>
+        btn.addEventListener("click", function(){ alert("Submitted Successfully"); });
+        </script>
+
+    </div>
+  </body>
 </html>
