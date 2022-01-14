@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
+                .antMatchers("/createjob").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
