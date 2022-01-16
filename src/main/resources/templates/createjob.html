@@ -211,14 +211,13 @@
 <!--  </div>-->
 <!--</nav>-->
 
-<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+<form action="#" th:action="@{/createjob}" th:object="${job}" method="post">
 
-  <p>Job ID: <input type="text" th:field="${jobID}" /></p>
-  <p>Client Name: <input type="text" th:field="${clientName}" /></p>
-  <p>Phone Number: <input type="text" th:field="${phoneNumber}" /></p>
-  <p>Starting Location: <input type="text" th:field="${startLocation}" /></p>
-  <p>Ending Location: <input type="text" th:field="${endLocation}" /></p>
-  <p>Job Date: <input type="text" th:field="${dateCreated}" /></p>
+  <p>Client Name: <input required type="text" th:field="${jobs.clientName}" /></p>
+  <p>Phone Number: <input type="text" th:field="${jobs.phoneNumber}" /></p>
+  <p>Starting Location: <input type="text" th:field="${jobs.startLocation}" /></p>
+  <p>Ending Location: <input type="text" th:field="${jobs.endLocation}" /></p>
+<!--  <p>Job Date: <input type="text" th:field="${dateCreated}" /></p>-->
   <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 
 </form>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 public class JobsController {
@@ -32,8 +33,9 @@ public class JobsController {
 
     @PostMapping("createjob")
     public String processCreateJobForm(@ModelAttribute @Valid Jobs newJob, Errors errors){
+        newJob.setDateCreated(new Date(System.currentTimeMillis()));
         jobRepository.save(newJob);
-        return "redirect:";
+        return "createjob";
 
 
     }

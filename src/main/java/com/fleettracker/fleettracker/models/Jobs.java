@@ -22,6 +22,8 @@ public class Jobs {
     @NotBlank @NotNull @Size(min=4, max = 100)
     private String endLocation;
 
+    private String phoneNumber;
+
     private Date dateCreated;
     private Time startTime;
     private Time endTime;
@@ -29,11 +31,12 @@ public class Jobs {
 
     public Jobs(){}
 
-    public Jobs(String clientName, String startLocation, String endLocation, Date dateCreated) {
+    public Jobs(String clientName, String startLocation, String endLocation, String phoneNumber) {
         this.clientName = clientName;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
-        this.dateCreated = new Date();
+        this.phoneNumber = phoneNumber;
+        this.dateCreated = new Date(System.currentTimeMillis());
         this.isCompleted = false;
     }
 
@@ -63,6 +66,14 @@ public class Jobs {
 
     public void setEndLocation(String endLocation) {
         this.endLocation = endLocation;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Date getDateCreated() {
