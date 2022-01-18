@@ -40,6 +40,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(encoder().encode("password"))
                 .roles("USER").build());
         manager.createUser(User
+                .withUsername("driver1")
+                .password(encoder().encode("password1"))
+                .roles("USER").build());
+        manager.createUser(User
+                .withUsername("driver2")
+                .password(encoder().encode("password2"))
+                .roles("USER").build());
+        manager.createUser(User
+                .withUsername("driver3")
+                .password(encoder().encode("password3"))
+                .roles("USER").build());
+        manager.createUser(User
                 .withUsername("admin")
                 .password(encoder().encode("adminPass"))
                 .roles("ADMIN").build());
