@@ -11,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 public class VehicleController {
@@ -32,6 +34,16 @@ public class VehicleController {
         model.addAttribute(new Vehicle());
         return "check-out-vehicle";
     }
+
+    @GetMapping("vehicle-status")
+    public String displayAllVehicleStatus(Model model){
+        Iterable<Vehicle> vehicles = vehicleRepository.findAll();
+        model.addAttribute("vehicles", vehicles);
+        return "vehicle-Status";
+
+
+    }
+
     @PostMapping("check-out-vehicle")
     public String processCreateJobForm(@ModelAttribute @Valid Vehicle newVehicle, Errors errors){
 
