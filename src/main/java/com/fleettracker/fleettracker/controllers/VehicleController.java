@@ -1,6 +1,7 @@
 package com.fleettracker.fleettracker.controllers;
 
 import com.fleettracker.fleettracker.models.Jobs;
+import com.fleettracker.fleettracker.models.Vehicle;
 import com.fleettracker.fleettracker.models.data.DriverRepository;
 import com.fleettracker.fleettracker.models.data.JobRepository;
 import com.fleettracker.fleettracker.models.data.VehicleRepository;
@@ -16,7 +17,7 @@ import javax.validation.Valid;
 import java.util.Date;
 
 @Controller
-public class JobsController {
+public class VehicleController {
     @Autowired
     private JobRepository jobRepository;
     @Autowired
@@ -24,18 +25,18 @@ public class JobsController {
     @Autowired
     private VehicleRepository vehicleRepository;
 
-
-    @GetMapping("createjob")
-    public String displayCreateJobForm(Model model) {
-        model.addAttribute(new Jobs());
-        return "createjob";
+    @GetMapping("check-out-vehicle")
+    public String displayAddVehicleForm(Model model) {
+        Iterable<Vehicle> vehicles = vehicleRepository.findAll();
+        model.addAttribute("vehicles", vehicles);
+        model.addAttribute(new Vehicle());
+        return "check-out-vehicle";
     }
+    @PostMapping("check-out-vehicle")
+    public String processCreateJobForm(@ModelAttribute @Valid Vehicle newVehicle, Errors errors){
 
-    @PostMapping("createjob")
-    public String processCreateJobForm(@ModelAttribute @Valid Jobs newJob, Errors errors){
-        newJob.setDateCreated(new Date(System.currentTimeMillis()));
-        jobRepository.save(newJob);
-        return "createjob";
+        vehicleRepository.save(newVehicle);
+        return "check-out-vehicle";
     }
 
 }

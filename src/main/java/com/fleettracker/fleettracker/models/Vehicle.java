@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 public class Vehicle{
     @GeneratedValue @Id
     private int vehicleId;
+    private String vehicleName;
     private String vehiclePlate;
     private int driverId;
     private int mileage;
@@ -18,7 +19,8 @@ public class Vehicle{
 
     public Vehicle(){}
 
-    public Vehicle(String vehiclePlate, int mileage, boolean needsRepair) {
+    public Vehicle(String vehicleName, String vehiclePlate, int mileage, boolean needsRepair) {
+        this.vehicleName = vehicleName;
         this.vehiclePlate = vehiclePlate;
         this.mileage = mileage;
         this.isCheckedOut = false;
@@ -27,6 +29,14 @@ public class Vehicle{
 
     public int getVehicleId() {
         return vehicleId;
+    }
+
+    public String getVehicleName() {
+        return vehicleName;
+    }
+
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
     }
 
     public String getVehiclePlate() {
