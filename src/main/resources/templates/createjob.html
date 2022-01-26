@@ -6,11 +6,19 @@
 <!--  figure out why it is not reading the style sheet-->
   <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
   <style>
-             #newJobHeader {
+            #newJobHeader {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
 
+  }
+
+      #h1-greeting {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
   }
 
   form {
@@ -173,43 +181,31 @@
       padding: 0 20px;
     }
   }
+
   </style>
 </head>
 <body>
-<!--needs a create job page title in controller-->
-<h1 th:text="${createJob}"></h1>
 
-<div th:insert="navbar :: navbar">  </div>
-<!--&lt;!&ndash;NAV BAR&ndash;&gt;-->
-<!--<nav class="menu-container">-->
+<nav class="menu-container">
 
-<!--  <h1 id="navHeader">Fleet Management</h1>-->
-<!--  &lt;!&ndash; menu items &ndash;&gt;-->
-<!--  <div class="menu">-->
-<!--    <ul>-->
-<!--      <li>-->
-<!--        <a href="landingpage.html">-->
-<!--          Home-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="createjob.html">-->
-<!--          Create Job-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="login.html">-->
-<!--          Login-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="landingpage.html">-->
-<!--          Sample Link-->
-<!--        </a>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</nav>-->
+  <h1 id="navHeader">Fleet Management</h1>
+  <!-- menu items -->
+  <div class="menu">
+    <ul>
+      <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+
+      <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+
+      <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
+
+      <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+
+      <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+    </ul>
+  </div>
+</nav>
+<h1 id="h1-greeting">Create a Job</h1>
+
 
 <form action="#" th:action="@{/createjob}" th:object="${job}" method="post">
 

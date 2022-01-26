@@ -7,11 +7,13 @@
 <!--  add manager "add vehicle form"-->
   <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
   <style>
-             #newJobHeader {
+
+    .h1-greeting {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
-
+    padding-top: 50px;
+    padding-bottom: 20px;
   }
 
   form {
@@ -174,11 +176,12 @@
       padding: 0 20px;
     }
   }
-      <style>
-      .subject-info-box-1,
-.subject-info-box-2 {
-    float: left;
-    width: 45%;
+
+      .subject-info-box-1 {
+      text-align: center;
+  margin: auto;
+  width: 50%;
+  padding-right: 20px;
 
     select {
         height: 200px;
@@ -189,20 +192,37 @@
         option:hover {
             background: #EEEEEE;
         }
+
     }
 }
-.subject-info-arrows {
-    float: left;
-    width: 10%;
-    input {
-        width: 70%;
-        margin-bottom: 5px;
-    }
+
+
 }
       </style>
-  </style>
+
 </head>
 <body>
+<nav class="menu-container">
+
+  <h1 id="navHeader">Fleet Management</h1>
+  <!-- menu items -->
+  <div class="menu">
+    <ul>
+      <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+
+      <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+
+      <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
+
+      <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+
+      <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+    </ul>
+  </div>
+</nav>
+
+<h1 class="h1-greeting">Add Vehicle to Fleet</h1>
+
 <form action="#" th:action="@{/check-out-vehicle}" th:object="${vehicle}" method="post">
   <p>Vehicle Name: <input type="text" th:field="${vehicle.vehicleName}" /></p>
   <p>License Plate #: <input type="text" th:field="${vehicle.vehiclePlate}" /></p>
@@ -211,28 +231,18 @@
   <p><input type="submit" value="Add Vehicle" /> <input type="reset" value="Reset" /></p>
 
 </form>
-<!--needs a page title in controller-->
-<h1 th:text="${checkOutVehicle}"></h1>
 
-<div th:insert="navbar :: navbar">  </div>
+<h1 class="h1-greeting">Check Out a Vehicle</h1>
+
 
 <body>
-<!--need to convert to thymeleaf-->
+
 <div class="subject-info-box-1">
   <select id='vehicleSelect' class="form-control">
     <option value="v1" th:each = "vehicle : ${vehicles}"
             th:text = "${vehicle.vehicleId} + '   ' + ${vehicle.vehicleName} + '   ' + ${vehicle.vehiclePlate} "
             th:value = "${vehicle.vehicleId}"></option>
-  </select>
-</div>
-<div class="subject-info-arrows text-center">
-  <input type='button' id='btnRight' value='>' class="btn btn-default" /><br />
-  <input type='button' id='btnLeft' value='<' class="btn btn-default" /><br />
-</div>
-<div class="subject-info-box-2">
-  <select multiple="multiple" id='lstBox2' class="form-control">
-    <option value=""></option>
-
+    <p><input type="submit" value="Checkout Vehicle" /></p>
   </select>
 </div>
 <div class="clearfix"></div>

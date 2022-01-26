@@ -173,6 +173,16 @@
     .menu li {
       padding: 0 20px;
     }
+
+    .login-container {
+        padding-left: 20px;
+        align-contents: center;
+    }
+
+    #login-header {
+        padding-left: 20px;
+    }
+
   }
 
     </style>
@@ -184,36 +194,27 @@
         <!-- menu items -->
         <div class="menu">
             <ul>
-                <li>
-                    <a href="landingpage.html">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="createjob.html">
-                        Create Job
-                    </a>
-                </li>
-                <li>
-                    <a href="login.html">
-                        Login
-                    </a>
-                </li>
-                <li>
-                    <a href="landingpage.html">
-                        Sample Link
-                    </a>
-                </li>
+                <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+
+                <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+
+                <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
+
+                <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+
+                <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
             </ul>
         </div>
     </nav>
-        <h1 th:text="${loginPage}"></h1>
+        <h1 id="login-header">Enter Credentials</h1>
 
+    <div class="login-container">
         <input type="username" name="username" class="form-control" placeholder="Username" required autofocus/>
         <input type="password" name="password" class="form-control" placeholder="Password" required />
 
-<!--        TODO (lauren): make "clear" actually work-->
-        <p><input type="submit" value="Login" /> <input type="submit" value="Clear" /></p>
+
+        <p><input type="submit" value="Login" /></p>
+    </div>
 
 </body>
 </html>
