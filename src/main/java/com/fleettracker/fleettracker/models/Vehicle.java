@@ -1,9 +1,8 @@
 package com.fleettracker.fleettracker.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Vehicle{
@@ -11,7 +10,10 @@ public class Vehicle{
     private int vehicleId;
     private String vehicleName;
     private String vehiclePlate;
-    private int driverId;
+    @OneToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
+
     private int mileage;
     private boolean isCheckedOut;
     private boolean needsRepair;
@@ -45,14 +47,6 @@ public class Vehicle{
 
     public void setVehiclePlate(String vehiclePlate) {
         this.vehiclePlate = vehiclePlate;
-    }
-
-    public int getDriverId() {
-        return driverId;
-    }
-
-    public void setDriverId(int driverId) {
-        this.driverId = driverId;
     }
 
     public int getMileage() {

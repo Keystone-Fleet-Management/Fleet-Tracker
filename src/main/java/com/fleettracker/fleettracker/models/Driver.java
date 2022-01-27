@@ -1,12 +1,21 @@
 package com.fleettracker.fleettracker.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Driver extends User{
-    private int vehicleId;
-    private int jobId;
+    @OneToOne
+    @JoinColumn(name ="vehicle_id")
+    private Vehicle vehicle;
+
+    @OneToOne
+    @JoinColumn(name ="job_id")
+    private Jobs job;
+
     private String location;
     private boolean onJob;
 
@@ -17,23 +26,7 @@ public class Driver extends User{
         this.onJob = false;
     }
 
-    public int getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public int getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(int jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getLocation() {
+     public String getLocation() {
         return location;
     }
 

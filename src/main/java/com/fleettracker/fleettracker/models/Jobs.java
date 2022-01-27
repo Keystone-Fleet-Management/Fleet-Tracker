@@ -21,8 +21,11 @@ public class Jobs {
 
     @NotBlank @NotNull @Size(min=4, max = 100)
     private String endLocation;
-
     private String phoneNumber;
+
+    @OneToOne
+    @JoinColumn(name="driver_id")
+    private Driver driver;
 
     private Date dateCreated;
     private Time startTime;
