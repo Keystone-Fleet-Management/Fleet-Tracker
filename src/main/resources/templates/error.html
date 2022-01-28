@@ -1,13 +1,18 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <style>
+    <style>
              h1 {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
   }
+
+    p {
+        font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    }
 
         #h1-greeting {
     font-family: Helvetica, sans-serif;
@@ -189,30 +194,26 @@
 </head>
 <nav class="menu-container">
 
-  <h1 id="navHeader">Fleet Management</h1>
-  <!-- menu items -->
-  <div class="menu">
-    <ul>
-      <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+    <h1 id="navHeader">Fleet Management</h1>
+    <!-- menu items -->
+    <div class="menu">
+        <ul>
+            <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
 
-      <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+            <li><a class="nav-link" th:href="@{/login}">Login</a></li>
 
-      <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
+            <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
 
-      <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+            <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
 
-      <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+            <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
 
-      <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
-    </ul>
-  </div>
+            <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
+        </ul>
+    </div>
 </nav>
-  <title>Sign Out!</title>
-</head>
 <body>
-<h1 th:inline="text">Goodbye [[${#httpServletRequest.remoteUser}]]!</h1>
-<form th:action="@{/logout}" method="post">
-  <input type="submit" value="Sign Out"/>
-</form>
+    <h1>Error!</h1>
+    <p> You do not have permission to view this page. Please contact website administrator.</p>
 </body>
 </html>
