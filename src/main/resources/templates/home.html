@@ -194,6 +194,8 @@
             <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
 
             <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+
+            <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
         </ul>
     </div>
 </nav>
@@ -202,7 +204,8 @@
 
     <h1 id="h1-greeting">Welcome to Keystone Fleet Management!</h1>
 
-    <p id="p-greeting">Click <a th:href="@{/landingpage}">here</a> to get started.</p>
+    <p id="p-greeting"><a th:href="@{/landingpage}">Driver Login</a><br>
+        <a th:href="@{/createjob}">Manager Login</a></p>
 
 
 </body>
