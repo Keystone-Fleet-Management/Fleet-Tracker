@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home").permitAll()
                 .antMatchers("/createjob", "/repair-log").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/check-out-vehicle").access("hasRole('ROLE_USER')")
+                .antMatchers("/check-in-vehicle").access("hasRole('ROLE_USER')")
                 .antMatchers("/landingpage").access("hasRole('ROLE_USER')")
                 .anyRequest().authenticated()
                 .and()
