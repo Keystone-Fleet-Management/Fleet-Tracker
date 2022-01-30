@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 public class Vehicle{
-    @GeneratedValue @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) @Id
     private int vehicleId;
     private String vehicleName;
     private String vehiclePlate;
@@ -17,7 +17,10 @@ public class Vehicle{
     private int mileage;
     private boolean isCheckedOut;
     private boolean needsRepair;
-    private String detailedStatus;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Status currentStatus;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Status> previousStatus= new ArrayList<>();
 
     public Vehicle(){}
 
@@ -49,6 +52,14 @@ public class Vehicle{
         this.vehiclePlate = vehiclePlate;
     }
 
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
     public int getMileage() {
         return mileage;
     }
@@ -73,11 +84,31 @@ public class Vehicle{
         this.needsRepair = needsRepair;
     }
 
-    public String getDetailedStatus() {
-        return detailedStatus;
+    public Status getCurrentStatus() {
+        return currentStatus;
     }
 
-    public void setDetailedStatus(String detailedStatus) {
-        this.detailedStatus = detailedStatus;
+    public void setCurrentStatus(Status currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+
+    public List<Status> getPreviousStatus() {
+        return previousStatus;
+    }
+
+    public void setPreviousStatus(ArrayList<Status> previousStatus) {
+        this.previousStatus = previousStatus;
+    }
+
+    public void addPreviousStatus(Status status) {
+        this.previousStatus.add(status);
+    }
+
+    public void deletePreviousStatus(int index){
+        this.previousStatus.remove(index);
+    }
+
+    public void removeDriver(){
+        this.driver = null;
     }
 }

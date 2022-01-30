@@ -221,20 +221,39 @@
   </div>
 </nav>
 
-<h1 class="h1-greeting">Check Out a Vehicle</h1>
-
-<form method="post">
-<div class="subject-info-box-1">
-  <select id='vehicleSelect' class="form-control" name="vehicleId">
-    <option th:unless ="${vehicle.isCheckedOut==true}" value="v1" th:each = "vehicle : ${vehicles}"
-            th:text = "${vehicle.vehicleId} + '   ' + ${vehicle.vehicleName} + '   ' + ${vehicle.vehiclePlate} "
-            th:value = "${vehicle.vehicleId}"
-    ></option>
-  </select>
-  <p><input type="submit" value="Checkout Vehicle"></p>
-</div>
-</form>
-<div class="clearfix"></div>
-
+<h1 class="h1-greeting">Check In Vehicle</h1>
+<h2 align="center" style="color:green" th:text = "${checkedOut}"></h2>
+  <form action="#" method="post">
+  <div>
+  <table class="center" border="1">
+    <tr>
+      <td>Vehicle ID:</td>
+      <td><span th:text="${vehicle.vehicleId} "></span></td>
+    </tr>
+    <tr>
+      <td>Vehicle Name:</td>
+      <td><span th:text="${vehicle.vehicleName} " /></td>
+    </tr>
+    <tr>
+      <td>Previous Mileage:</td>
+      <td><span th:text="${vehicle.mileage} " /></td>
+      <td>Current Mileage:</td>
+      <td><input type="text" name="mileage" th:value="${vehicle.mileage}" required /></td>
+    </tr>
+    <tr>
+      <td>Does the Vehicle need repair?:</td>
+      <td>
+        <input type="checkbox" name="repair_status" value="true" />
+      </td>
+    </tr>
+  </table>
+  </div>
+    <div>
+      <p>Status Notes</p>
+      <textarea name="status" th:value="${vehicle.currentStatus}" rows="4" cols="50"></textarea>
+      <input type="hidden" th:value="${vehicle.vehicleId}" name="vehicleId" id="vehicleId"/>
+      <p><input type="submit" value="Check In" /> <input type="reset" value="reset" /></p>
+    </div>
+  </form>
 </body>
 </html>

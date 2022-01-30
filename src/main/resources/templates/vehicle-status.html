@@ -213,29 +213,78 @@
 
 <h1 id="h1-greeting">Vehicle Status</h1>
 
+<form method="get">
+    <div class="subject-info-box-1">
+        <select id='vehicleSelect' class="form-control" name="vehicleId" onchange="this.form.submit()">
+            <option value="none" selected disabled hidden>Select a Vehicle</option>
+            <option th:each = "vehicle : ${vehicles}"
+                    th:text = "${vehicle.vehicleId} + '   ' + ${vehicle.vehicleName} + '   ' + ${vehicle.vehiclePlate} "
+                    th:value = "${vehicle.vehicleId}"
+            ></option>
+        </select>
+    </div>
+</form>
+<div class="clearfix"></div>
 
+<div>
     <table class="center" border="1">
-        <thead>
-        <tr>
-            <th> ID </th>
-            <th> Make/Model </th>
-            <th> Needs Repair? </th>
-            <th> Detailed Status </th>
-        </tr>
-        </thead>
+
         <tbody>
-        <tr th:if="${vehicles.empty}">
-            <td colspan="2"> No Vehicles Available </td>
+        <tr>
+            <td><span>Vehicle ID:</span></td>
+            <td><span th:text="${selectedVehicle.vehicleId} "></span></td>
         </tr>
-        <tr th:each="vehicle : ${vehicles}">
-            <td><span th:text="${vehicle.vehicleId}"> Vehicle </span></td>
-            <td><span th:text="${vehicle.vehicleName}">Make/Model</span></td>
+        <tr>
+            <td><span>Vehicle Name:</span></td>
+            <td><span th:text="${selectedVehicle.vehicleName} " /></td>
+        </tr>
+        <tr>
+            <td><span>License Plate#:</span></td>
+            <td><span th:text="${selectedVehicle.vehiclePlate} " /></td>
+        </tr>
+        <tr>
+            <td><span>Mileage:</span></td>
+            <td><span th:text="${selectedVehicle.mileage} " /></td>
+        </tr>
+        <tr>
+            <td><span>Repair Status:</span></td>
             <td>
-                <span th:if = "${vehicle.needsRepair == True}">Yes</span>
-                <span th:if = "${vehicle.needsRepair == False}">No</span>
+                <span th:if = "${selectedVehicle.needsRepair == True}" style="color:red">Needs Repairs</span>
+                <span th:if = "${selectedVehicle.needsRepair == False}" style="color:green">No Repairs Needed</span>
             </td>
-            <td><span th:text="${vehicle.detailedStatus}"> Status </span></td>
         </tr>
+        <tr>
+            <td><span>Status:</span></td>
+            <td>
+                <span th:if = "${selectedVehicle.isCheckedOut== True}">Vehicle is currently checked out.</span>
+                <span th:if = "${selectedVehicle.isCheckedOut == False}">Vehicle is available for check-out.</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Current Driver:</span></td>
+            <td><span th:if="${selectedVehicle ne null and selectedVehicle.driver ne null}" th:text="${selectedVehicle.driver.name} " /></td>
+        </tr>
+        <tr>
+            <td><span>Current Status:</span></td>
+            <td>
+                <span th:if="${selectedVehicle ne null and selectedVehicle.currentStatus ne null}"
+                      th:text="${selectedVehicle.currentStatus.dateAdded} + '  ' + ${selectedVehicle.currentStatus.statusText} " />
+            </td>
+        </tr>
+        <tr>
+            <td><span>Previous Status:</span></td>
+            <td>
+                <table>
+                    <tr th:each="status : ${selectedVehicle.previousStatus}">
+                            <p>
+                                <span th:if="${selectedVehicle ne null and selectedVehicle.currentStatus ne null}"
+                                th:text="${status.dateAdded} + '  ' + ${status.statusText} " />
+                            </p>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 </div>

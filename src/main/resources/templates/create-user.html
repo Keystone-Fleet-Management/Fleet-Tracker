@@ -2,13 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
   <meta charset="UTF-8"/>
-  <title>Check Out a Vehicle</title>
-  <!--  figure out why it is not reading the style sheet-->
-<!--  add manager "add vehicle form"-->
+  <title>Create a New Job</title>
+<!--  figure out why it is not reading the style sheet-->
   <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
   <style>
+            #newJobHeader {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
 
-    .h1-greeting {
+  }
+
+      #h1-greeting {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
@@ -177,31 +182,10 @@
     }
   }
 
-      .subject-info-box-1 {
-      text-align: center;
-  margin: auto;
-  width: 50%;
-  padding-right: 20px;
-
-    select {
-        height: 200px;
-        padding: 0;
-        option {
-            padding: 4px 10px 4px 10px;
-        }
-        option:hover {
-            background: #EEEEEE;
-        }
-
-    }
-}
-
-
-}
-      </style>
-
+  </style>
 </head>
 <body>
+
 <nav class="menu-container">
 
   <h1 id="navHeader">Fleet Management</h1>
@@ -220,21 +204,17 @@
     </ul>
   </div>
 </nav>
+<h1 id="h1-greeting">Create Driver</h1>
 
-<h1 class="h1-greeting">Check Out a Vehicle</h1>
 
-<form method="post">
-<div class="subject-info-box-1">
-  <select id='vehicleSelect' class="form-control" name="vehicleId">
-    <option th:unless ="${vehicle.isCheckedOut==true}" value="v1" th:each = "vehicle : ${vehicles}"
-            th:text = "${vehicle.vehicleId} + '   ' + ${vehicle.vehicleName} + '   ' + ${vehicle.vehiclePlate} "
-            th:value = "${vehicle.vehicleId}"
-    ></option>
-  </select>
-  <p><input type="submit" value="Checkout Vehicle"></p>
-</div>
+<form action="#" th:action="@{/create-user}" th:object="${driver}" method="post">
+
+  <p>Name: <input required type="text" th:field="${driver.name}" /></p>
+  <p>Username: <input type="text" th:field="${driver.username}" /></p>
+  <p>Password: <input type="text" th:field="${driver.password}" /></p>
+  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+
 </form>
-<div class="clearfix"></div>
 
 </body>
 </html>

@@ -10,8 +10,8 @@ import java.util.Date;
 
 @Entity
 public class Jobs {
-    @Id @GeneratedValue
-    private Integer jobID;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer jobId;
 
     @NotBlank @NotNull @Size(min=4, max = 50)
     private String clientName;
@@ -30,6 +30,7 @@ public class Jobs {
     private Date dateCreated;
     private Time startTime;
     private Time endTime;
+    private boolean isActive;
     private boolean isCompleted;
 
     public Jobs(){}
@@ -40,11 +41,12 @@ public class Jobs {
         this.endLocation = endLocation;
         this.phoneNumber = phoneNumber;
         this.dateCreated = new Date(System.currentTimeMillis());
+        this.isActive = false;
         this.isCompleted = false;
     }
 
     public Integer getJobID() {
-        return jobID;
+        return jobId;
     }
 
     public String getClientName() {
@@ -79,6 +81,14 @@ public class Jobs {
         this.phoneNumber = phoneNumber;
     }
 
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -101,6 +111,14 @@ public class Jobs {
 
     public void setEndTime(Time endTime) {
         this.endTime = endTime;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public boolean isCompleted() {

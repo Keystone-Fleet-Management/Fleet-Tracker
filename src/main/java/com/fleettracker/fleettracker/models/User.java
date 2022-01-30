@@ -1,17 +1,14 @@
 package com.fleettracker.fleettracker.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @MappedSuperclass
 public class User {
 
-    @GeneratedValue @Id
-    private int userID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) @Id
+    private int userId;
 
     @NotNull @Size(min=3)
     private String name;
@@ -31,7 +28,7 @@ public class User {
     }
 
     public int getUserID() {
-        return userID;
+        return userId;
     }
 
     public String getName() {

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Check Out a Vehicle</title>
-  <!--  figure out why it is not reading the style sheet-->
-<!--  add manager "add vehicle form"-->
-  <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
-  <style>
+    <meta charset="UTF-8"/>
+    <title>Check Out a Vehicle</title>
+    <!--  figure out why it is not reading the style sheet-->
+    <!--  add manager "add vehicle form"-->
+    <link th:href="@{/templates/static/main.css}" rel="stylesheet" />
+    <style>
 
     .h1-greeting {
     font-family: Helvetica, sans-serif;
@@ -204,37 +204,33 @@
 <body>
 <nav class="menu-container">
 
-  <h1 id="navHeader">Fleet Management</h1>
-  <!-- menu items -->
-  <div class="menu">
-    <ul>
-      <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+    <h1 id="navHeader">Fleet Management</h1>
+    <!-- menu items -->
+    <div class="menu">
+        <ul>
+            <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
 
-      <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+            <li><a class="nav-link" th:href="@{/login}">Login</a></li>
 
-      <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
+            <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
 
-      <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+            <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
 
-      <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
-    </ul>
-  </div>
+            <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+        </ul>
+    </div>
 </nav>
 
-<h1 class="h1-greeting">Check Out a Vehicle</h1>
+<h1 class="h1-greeting">Add Vehicle to Fleet</h1>
 
-<form method="post">
-<div class="subject-info-box-1">
-  <select id='vehicleSelect' class="form-control" name="vehicleId">
-    <option th:unless ="${vehicle.isCheckedOut==true}" value="v1" th:each = "vehicle : ${vehicles}"
-            th:text = "${vehicle.vehicleId} + '   ' + ${vehicle.vehicleName} + '   ' + ${vehicle.vehiclePlate} "
-            th:value = "${vehicle.vehicleId}"
-    ></option>
-  </select>
-  <p><input type="submit" value="Checkout Vehicle"></p>
-</div>
+<form action="#" th:action="@{/add-vehicle}" th:object="${vehicle}" method="post">
+    <p>Vehicle Name: <input type="text" th:field="${vehicle.vehicleName}" /></p>
+    <p>License Plate #: <input type="text" th:field="${vehicle.vehiclePlate}" /></p>
+    <p>Mileage: <input type="text" th:field="${vehicle.mileage}" /></p>
+    <p>Does the Vehicle need repair?: <input type="checkbox" name="repair_status" th:field="${vehicle.needsRepair}" /></p>
+    <p><input type="submit" value="Add Vehicle" /> <input type="reset" value="reset" /></p>
+
 </form>
-<div class="clearfix"></div>
 
 </body>
 </html>

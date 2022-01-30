@@ -195,5 +195,122 @@
     </ul>
   </div>
 </nav>
+<h1 id="h1-greeting">Jobs Status</h1>
+
+<h1>Available Jobs</h1>
+
+<table class="center" border="1">
+  <thead>
+  <tr th:unless="${availableJobs.empty}">
+    <th> Job ID </th>
+    <th> Client Name </th>
+    <th> Client Contact </th>
+    <th> Starting Location</th>
+    <th> Destination</th>
+    <th> Date Added</th>
+    <th> Accept Job</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${availableJobs.empty}">
+    <td colspan="2"> No Available Jobs</td>
+  </tr>
+
+  <tr th:each="job : ${availableJobs}" th:object="${availableJobs}">
+    <form method="post">
+    <td><span th:text="${job.jobId}"> Job ID </span></td>
+    <td><span th:text="${job.clientName}">Client Name</span></td>
+    <td><span th:text="${job.phoneNumber}">Client Name</span></td>
+    <td><span th:text="${job.startLocation}">Starting Location</span></td>
+    <td><span th:text="${job.endLocation}"> Destination </span></td>
+    <td><span th:text="${job.dateCreated}"> Date Added </span></td>
+      <td>
+        <input type="hidden" th:value="${job.jobId}" name="jobId" id="availablejobId"/>
+        <button type="submit"><b>Start Job</b></button>
+      </td>
+
+    </form>
+  </tr>
+  </tbody>
+</table>
+
+<h1>Currently Active</h1>
+<br/>
+<table class="center" border="1">
+  <thead>
+  <tr th:unless="${activeJobs.empty}">
+    <th> Job ID </th>
+    <th> Client Name </th>
+    <th> Client Contact </th>
+    <th> Starting Location</th>
+    <th> Destination</th>
+    <th> Driver ID</th>
+    <th> Driver Name</th>
+    <th> Start Time</th>
+    <th> Date Added</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${activeJobs.empty}">
+    <td colspan="2"> No Active Jobs</td>
+  </tr>
+
+  <tr th:each="job : ${activeJobs}" th:object="${activeJobs}">
+    <form method="post">
+    <td><span th:text="${job.jobId}"> Job ID </span></td>
+    <td><span th:text="${job.clientName}">Client Name</span></td>
+    <td><span th:text="${job.phoneNumber}">Client Name</span></td>
+    <td><span th:text="${job.startLocation}">Starting Location</span></td>
+    <td><span th:text="${job.endLocation}"> Destination </span></td>
+    <td><span th:text="${job.driver.userID}"> Driver ID </span></td>
+    <td><span th:text="${job.driver.name}"> Driver Name </span></td>
+    <td><span th:text="${job.startTime}"> Start Time </span></td>
+    <td><span th:text="${job.dateCreated}"> Date Added </span></td>
+    <td>
+      <input type="hidden" th:value="${job.jobId}" name="jobId" id="activejobId"/>
+      <button type="submit"><b>Complete</b></button>
+    </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h1>Completed Jobs</h1>
+<br/>
+<table class="center" border="1">
+  <thead>
+  <tr th:unless="${completedJobs.empty}">
+    <th> Job ID </th>
+    <th> Client Name </th>
+    <th> Client Contact </th>
+    <th> Starting Location</th>
+    <th> Destination</th>
+    <th> Driver ID</th>
+    <th> Driver Name</th>
+    <th> Start Time</th>
+    <th> End Time</th>
+    <th> Date Added</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${completedJobs.empty}">
+    <td colspan="2">No Completed Jobs</td>
+  </tr>
+
+  <tr th:each="job : ${completedJobs}" th:object="${completedJobs}">
+    <td><span th:text="${job.jobId}"> Job ID </span></td>
+    <td><span th:text="${job.clientName}">Client Name</span></td>
+    <td><span th:text="${job.phoneNumber}">Client Name</span></td>
+    <td><span th:text="${job.startLocation}">Starting Location</span></td>
+    <td><span th:text="${job.endLocation}"> Destination </span></td>
+    <td><span th:text="${job.driver.userID}"> Driver ID </span></td>
+    <td><span th:text="${job.driver.name}"> Driver Name </span></td>
+    <td><span th:text="${job.startTime}"> Start Time </span></td>
+    <td><span th:text="${job.endTime}"> End Time </span></td>
+    <td><span th:text="${job.dateCreated}"> Date Added </span></td>
+  </tr>
+  </tbody>
+</table>
+
 </body>
 </html>
