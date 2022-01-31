@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-                .antMatchers("/createjob", "/repair-log").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/createjob", "/repair-log", "/create-user", "vehicle-status", "/add-vehicle").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/check-out-vehicle").access("hasRole('ROLE_USER')")
                 .antMatchers("/check-in-vehicle").access("hasRole('ROLE_USER')")
                 .antMatchers("/landingpage").access("hasRole('ROLE_USER')")

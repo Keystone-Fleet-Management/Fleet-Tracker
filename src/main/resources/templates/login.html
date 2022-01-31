@@ -1,213 +1,213 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-<!--    TODO (lauren): add styling-->
-<!--    cant figure out why this isnt working-->
-   <link th:href="@{resources/static/main.css}" rel="stylesheet" />
-    <style>
-                 #newJobHeader {
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    text-align: center;
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Login</title>-->
+<!--&lt;!&ndash;    TODO (lauren): add styling&ndash;&gt;-->
+<!--&lt;!&ndash;    cant figure out why this isnt working&ndash;&gt;-->
+<!--   <link th:href="@{resources/static/main.css}" rel="stylesheet" />-->
+<!--    <style>-->
+<!--                 #newJobHeader {-->
+<!--    font-family: Helvetica, sans-serif;-->
+<!--    font-weight: bold;-->
+<!--    text-align: center;-->
 
-  }
+<!--  }-->
 
-  form {
-    font-family: Helvetica, sans-serif;
-    text-align: center;
-  }
+<!--  form {-->
+<!--    font-family: Helvetica, sans-serif;-->
+<!--    text-align: center;-->
+<!--  }-->
 
-  input {
-    align-items: center;
-  }
-
-
-  .formDiv {
-    font-family: Helvetica, sans-serif;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-    height: 60px;
-  }
-
-  #bodyDiv {
-      background: rgb(175, 175, 175);
-      margin: 30px;
-  }
+<!--  input {-->
+<!--    align-items: center;-->
+<!--  }-->
 
 
+<!--  .formDiv {-->
+<!--    font-family: Helvetica, sans-serif;-->
+<!--    text-align: center;-->
+<!--    font-weight: bold;-->
+<!--    margin-bottom: 20px;-->
+<!--    height: 60px;-->
+<!--  }-->
 
-  #btn {
-    font-size: 15px;
-    font-family: Helvetica, sans-serif;
-  }
-
-  body {
-    overflow-x: hidden;
-    font-family: Sans-Serif;
-    margin: 0;
-  }
-
-  .menu-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    background: #232323;
-    color: #cdcdcd;
-    padding: 20px;
-    z-index: 1;
-    -webkit-user-select: none;
-    user-select: none;
-    box-sizing: border-box;
-  }
+<!--  #bodyDiv {-->
+<!--      background: rgb(175, 175, 175);-->
+<!--      margin: 30px;-->
+<!--  }-->
 
 
-  .menu-container a {
-    text-decoration: none;
-    color: #742222;
-    transition: color 0.3s ease;
-  }
+
+<!--  #btn {-->
+<!--    font-size: 15px;-->
+<!--    font-family: Helvetica, sans-serif;-->
+<!--  }-->
+
+<!--  body {-->
+<!--    overflow-x: hidden;-->
+<!--    font-family: Sans-Serif;-->
+<!--    margin: 0;-->
+<!--  }-->
+
+<!--  .menu-container {-->
+<!--    position: relative;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    margin-bottom: 20px;-->
+<!--    background: #232323;-->
+<!--    color: #cdcdcd;-->
+<!--    padding: 20px;-->
+<!--    z-index: 1;-->
+<!--    -webkit-user-select: none;-->
+<!--    user-select: none;-->
+<!--    box-sizing: border-box;-->
+<!--  }-->
 
 
-  .menu-container input {
-    display: block;
-    width: 35px;
-    height: 25px;
-    margin: 0;
-    position: absolute;
-  }
-
-  .menu-container span {
-    display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-    background: #cdcdcd;
-    border-radius: 3px;
-
-  }
+<!--  .menu-container a {-->
+<!--    text-decoration: none;-->
+<!--    color: #742222;-->
+<!--    transition: color 0.3s ease;-->
+<!--  }-->
 
 
-  .menu ul {
-    list-style: none;
-  }
+<!--  .menu-container input {-->
+<!--    display: block;-->
+<!--    width: 35px;-->
+<!--    height: 25px;-->
+<!--    margin: 0;-->
+<!--    position: absolute;-->
+<!--  }-->
 
-  .menu li {
-    padding: 10px 0;
-    font-size: 22px;
-  }
+<!--  .menu-container span {-->
+<!--    display: block;-->
+<!--    width: 33px;-->
+<!--    height: 4px;-->
+<!--    margin-bottom: 5px;-->
+<!--    position: relative;-->
+<!--    background: #cdcdcd;-->
+<!--    border-radius: 3px;-->
 
-  /* mobile styles */
-  @media only screen and (max-width: 767px) {
-    .menu-container {
-      flex-direction: column;
-      align-items: flex-end;
-    }
+<!--  }-->
 
-    .menu-logo {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
 
-    .menu-logo img {
-      max-height: 30px;
-    }
+<!--  .menu ul {-->
+<!--    list-style: none;-->
+<!--  }-->
 
-    .menu {
-      position: absolute;
-      box-sizing: border-box;
-      width: 300px;
-      right: -300px;
-      top: 0;
-      margin: -20px;
-      padding: 75px 50px 50px;
-      background: #cdcdcd;
-      -webkit-font-smoothing: antialiased;
-      /* to stop flickering of text in safari */
-      transform-origin: 0% 0%;
-      transform: translateX(0%);
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-    }
+<!--  .menu li {-->
+<!--    padding: 10px 0;-->
+<!--    font-size: 22px;-->
+<!--  }-->
 
-    .menu-container input:checked ~ .menu {
-      transform: translateX(-100%);
-    }
-  }
+<!--  /* mobile styles */-->
+<!--  @media only screen and (max-width: 767px) {-->
+<!--    .menu-container {-->
+<!--      flex-direction: column;-->
+<!--      align-items: flex-end;-->
+<!--    }-->
 
-  /* desktop styles */
-  @media only screen and (min-width: 768px) {
-    .menu-container {
-      width: 100%;
-    }
+<!--    .menu-logo {-->
+<!--      position: absolute;-->
+<!--      left: 0;-->
+<!--      top: 50%;-->
+<!--      transform: translateY(-50%);-->
+<!--    }-->
 
-    .menu-container a {
-      color: #cdcdcd;
-    }
+<!--    .menu-logo img {-->
+<!--      max-height: 30px;-->
+<!--    }-->
 
-    .menu-container input {
-      display: none;
-    }
+<!--    .menu {-->
+<!--      position: absolute;-->
+<!--      box-sizing: border-box;-->
+<!--      width: 300px;-->
+<!--      right: -300px;-->
+<!--      top: 0;-->
+<!--      margin: -20px;-->
+<!--      padding: 75px 50px 50px;-->
+<!--      background: #cdcdcd;-->
+<!--      -webkit-font-smoothing: antialiased;-->
+<!--      /* to stop flickering of text in safari */-->
+<!--      transform-origin: 0% 0%;-->
+<!--      transform: translateX(0%);-->
+<!--      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);-->
+<!--    }-->
 
-    .menu-container span {
-      display: none;
-    }
+<!--    .menu-container input:checked ~ .menu {-->
+<!--      transform: translateX(-100%);-->
+<!--    }-->
+<!--  }-->
 
-    .menu {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
+<!--  /* desktop styles */-->
+<!--  @media only screen and (min-width: 768px) {-->
+<!--    .menu-container {-->
+<!--      width: 100%;-->
+<!--    }-->
 
-    .menu ul {
-      display: flex;
-      padding: 0;
-    }
+<!--    .menu-container a {-->
+<!--      color: #cdcdcd;-->
+<!--    }-->
 
-    .menu li {
-      padding: 0 20px;
-    }
+<!--    .menu-container input {-->
+<!--      display: none;-->
+<!--    }-->
 
-    .login-container {
-        padding-left: 20px;
-        align-contents: center;
-    }
+<!--    .menu-container span {-->
+<!--      display: none;-->
+<!--    }-->
 
-    #login-header {
-        padding-left: 20px;
-    }
+<!--    .menu {-->
+<!--      position: relative;-->
+<!--      width: 100%;-->
+<!--      display: flex;-->
+<!--      justify-content: space-between;-->
+<!--    }-->
 
-  }
+<!--    .menu ul {-->
+<!--      display: flex;-->
+<!--      padding: 0;-->
+<!--    }-->
 
-    </style>
+<!--    .menu li {-->
+<!--      padding: 0 20px;-->
+<!--    }-->
+
+<!--    .login-container {-->
+<!--        padding-left: 20px;-->
+<!--        align-contents: center;-->
+<!--    }-->
+
+<!--    #login-header {-->
+<!--        padding-left: 20px;-->
+<!--    }-->
+
+<!--  }-->
+
+<!--    </style>-->
 </head>
     <body>
-    <nav class="menu-container">
+<!--    <nav class="menu-container">-->
 
-        <h1 id="navHeader">Fleet Management</h1>
-        <!-- menu items -->
-        <div class="menu">
-            <ul>
-                <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+<!--        <h1 id="navHeader">Fleet Management</h1>-->
+<!--        &lt;!&ndash; menu items &ndash;&gt;-->
+<!--        <div class="menu">-->
+<!--            <ul>-->
+<!--                <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>-->
 
-                <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+<!--                <li><a class="nav-link" th:href="@{/login}">Login</a></li>-->
 
-                <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
+<!--                <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>-->
 
-                <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+<!--                <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>-->
 
-                <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+<!--                <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>-->
 
-                <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
+<!--                <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
     <div class="login-container">
         <h1 id="login-header">Enter Credentials</h1>
         <form th:action="@{/login}" method="post">
