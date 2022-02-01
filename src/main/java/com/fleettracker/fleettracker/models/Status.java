@@ -1,6 +1,9 @@
 package com.fleettracker.fleettracker.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -8,28 +11,30 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
-    private Date dateAdded;
+    private String dateAdded;
     private String statusText = "";
     private boolean isHidden;
     private boolean isRead;
     @ManyToOne(cascade = CascadeType.ALL)
     private Vehicle vehicle;
+    @Transient
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy | hh:mm:ssa");
 
     public Status(){}
 
     public Status(String statusText){
         this.statusText = statusText;
-        this.dateAdded = new Date(System.currentTimeMillis());
+        this.dateAdded = dateFormat.format(new Date(System.currentTimeMillis()));
         this.isHidden = false;
         this.isRead = false;
     }
 
-    public Date getDateAdded() {
+    public String getDateAdded() {
         return dateAdded;
     }
 
     public void setDateAdded(Date dateAdded) {
-        this.dateAdded = dateAdded;
+        this.dateAdded = dateFormat.format(dateAdded);
     }
 
     public String getStatusText() {

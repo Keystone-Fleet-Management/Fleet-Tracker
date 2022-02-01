@@ -270,7 +270,7 @@
             <td><span>Current Status:</span></td>
             <td>
                 <span th:if="${selectedVehicle ne null and selectedVehicle.currentStatus ne null}"
-                      th:text="${selectedVehicle.currentStatus.dateAdded} + '  ' + ${selectedVehicle.currentStatus.statusText} " />
+                      th:text="'[' + ${selectedVehicle.currentStatus.dateAdded} + ']' + '   ' + ${selectedVehicle.currentStatus.statusText} " />
             </td>
         </tr>
         <tr>
@@ -280,7 +280,7 @@
                     <tr th:each="status : ${selectedVehicle.previousStatus}">
                             <p>
                                 <span th:if="${selectedVehicle ne null and selectedVehicle.currentStatus ne null}"
-                                th:text="${status.dateAdded} + '  ' + ${status.statusText} " />
+                                th:text="'[' + ${status.dateAdded} + ']' + '   ' + ${status.statusText} " />
                             </p>
                     </tr>
                 </table>

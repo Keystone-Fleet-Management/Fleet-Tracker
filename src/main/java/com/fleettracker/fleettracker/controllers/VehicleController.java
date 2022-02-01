@@ -38,8 +38,10 @@ public class VehicleController {
     public String displayCheckoutVehicleForm(Model model) {
         Iterable<Vehicle> vehicles = vehicleRepository.findAll();
         model.addAttribute("vehicles", vehicles);
-        Driver currentDriver = driverRepository.findById(1).get();
-        model.addAttribute("currentDriver", currentDriver);
+        if(driverRepository.findById(1).isPresent()) {
+            Driver currentDriver = driverRepository.findById(1).get();
+            model.addAttribute("currentDriver", currentDriver);
+        } else {model.addAttribute("currentDriver", new Driver("No Driver", "user", "password"));}
 
         return "check-out-vehicle";
     }
@@ -104,7 +106,7 @@ public class VehicleController {
             driverRepository.save(currentDriver);
             vehicleRepository.save(selectedVehicle);
         }
-        return "redirect:/check-out-vehicle";
+        return "check-out-vehicle";
     }
 
     @PostMapping("check-in-vehicle")

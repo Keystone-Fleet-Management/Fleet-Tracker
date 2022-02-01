@@ -1,11 +1,14 @@
 package com.fleettracker.fleettracker.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -27,11 +30,15 @@ public class Jobs {
     @JoinColumn(name="driver_id")
     private Driver driver;
 
-    private Date dateCreated;
-    private Time startTime;
-    private Time endTime;
+    private String dateCreated;
+    private String startTime;
+    private String endTime;
     private boolean isActive;
     private boolean isCompleted;
+    @Transient
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy | hh:mm:ssa");
+    @Transient
+    private SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ssa");
 
     public Jobs(){}
 
@@ -40,7 +47,7 @@ public class Jobs {
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.phoneNumber = phoneNumber;
-        this.dateCreated = new Date(System.currentTimeMillis());
+        this.dateCreated = dateFormat.format(new Date(System.currentTimeMillis()));
         this.isActive = false;
         this.isCompleted = false;
     }
@@ -89,28 +96,28 @@ public class Jobs {
         this.driver = driver;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
     public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+        this.dateCreated = dateFormat.format(dateCreated);
     }
 
-    public Time getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
     public void setStartTime(Time startTime) {
-        this.startTime = startTime;
+        this.startTime = timeFormat.format(startTime);
     }
 
-    public Time getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
     public void setEndTime(Time endTime) {
-        this.endTime = endTime;
+        this.endTime = timeFormat.format(endTime);
     }
 
     public boolean isActive() {

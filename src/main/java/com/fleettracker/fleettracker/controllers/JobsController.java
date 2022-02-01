@@ -78,7 +78,7 @@ public class JobsController {
             selectedJob.setCompleted(true);
             selectedJob.setActive(false);
             selectedJob.setEndTime(new Time(System.currentTimeMillis()));
-            currentDriver.setJob(jobRepository.findById(0).get());
+            currentDriver.setJob(null);
             currentDriver.setOnJob(false);
             driverRepository.save(currentDriver);
             jobRepository.save(selectedJob);
