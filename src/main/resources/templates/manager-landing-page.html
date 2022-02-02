@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <!--    TODO (lauren): add styling-->
-    <!--    cant figure out why this isnt working-->
-    <!--   <link th:href="@{resources/static/main.css}" rel="stylesheet" />-->
     <style>
 
          .h1-greeting {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+
+           .h2-greeting {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
@@ -20,9 +25,44 @@
     font-weight: bold;
     text-align: center;
   }
+                  h2 {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+  }
+   li {
+      font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+     list-style-type: none;
+     padding: 15px;
+}
 
-  body {
-  background-image: url("https://www.teamais.net/wp-content/uploads/2020/08/fleet-vehicle.jpeg");
+/* unvisited link */
+a:link {
+  color: gray;
+}
+
+/* visited link */
+a:visited {
+  color: gray;
+}
+
+/* mouse over link */
+a:hover {
+  color: #C8C8C8;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
+
+
+    body {
+  background-image: url("https://oldschoolgrappling.com/wp-content/uploads/2018/08/Background-opera-speeddials-community-web-simple-backgrounds.jpg");
+    background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
   form {
