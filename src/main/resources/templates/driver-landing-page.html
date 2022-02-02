@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+CTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-<!--    TODO (lauren): add styling-->
-<!--    cant figure out why this isnt working-->
-<!--   <link th:href="@{resources/static/main.css}" rel="stylesheet" />-->
+    <!--    TODO (lauren): add styling-->
+    <!--    cant figure out why this isnt working-->
+    <!--   <link th:href="@{resources/static/main.css}" rel="stylesheet" />-->
     <style>
 
          .h1-greeting {
@@ -15,19 +15,26 @@
     padding-top: 50px;
     padding-bottom: 20px;
   }
-                h1 {
+
+
+         .h2-greeting {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+
+     h1 {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
   }
 
-  body {
+    body {
   background-image: url("https://oldschoolgrappling.com/wp-content/uploads/2018/08/Background-opera-speeddials-community-web-simple-backgrounds.jpg");
     background-attachment: fixed;
   background-size: 100% 100%;
-      overflow-x: hidden;
-    font-family: Sans-Serif;
-    margin: 0;
 }
 
   form {
@@ -54,12 +61,20 @@
   }
 
 
+.functions-div {
+    padding: 30px;
+}
 
   #btn {
     font-size: 15px;
     font-family: Helvetica, sans-serif;
   }
 
+  body {
+    overflow-x: hidden;
+    font-family: Sans-Serif;
+    margin: 0;
+  }
 
   .menu-container {
     position: relative;
@@ -283,68 +298,78 @@ background: linear-gradient(95deg, rgba(1,3,20,1) 29%, rgba(91,0,0,1) 90%);
 
     </style>
 </head>
-    <body>
-    <nav class="menu-container">
+<body>
+<nav class="menu-container">
 
-        <h1 id="navHeader">Fleet Management</h1>
-        <!-- menu items -->
-        <div class="menu">
-            <ul>
+    <h1 id="navHeader">Fleet Management</h1>
+    <!-- menu items -->
+    <div class="menu">
+        <ul>
 
-                <div class="dropdown">
-                    <button class="dropbtn">Roles
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <li><a class="nav-link" th:href="@{/driver-landing-page}">Driver Functions</a></li>
-                        <li><a class="nav-link" th:href="@{/manager-landing-page}">Manager Functions</a></li>
-                    </div>
+            <div class="dropdown">
+                <button class="dropbtn">Roles
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <li><a class="nav-link" th:href="@{/driver-landing-page}">Driver Functions</a></li>
+                    <li><a class="nav-link" th:href="@{/manager-landing-page}">Manager Functions</a></li>
                 </div>
+            </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn">Jobs
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
-                        <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
-                    </div>
+            <div class="dropdown">
+                <button class="dropbtn">Jobs
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <li><a class="nav-link" th:href="@{/createjob}">Create Job</a></li>
+                    <li><a class="nav-link" th:href="@{/jobstatus}">View Job Status</a></li>
                 </div>
+            </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn">Vehicles
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
-                        <li><a class="nav-link" th:href="@{/check-in-vehicle}">Check In Vehicles </a></li>
-                        <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
+            <div class="dropdown">
+                <button class="dropbtn">Vehicles
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <li><a class="nav-link" th:href="@{/vehicle-status}">View Vehicle Statuses</a></li>
+                    <li><a class="nav-link" th:href="@{/check-in-vehicle}">Check In Vehicles </a></li>
+                    <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out Vehicles </a></li>
 
-                    </div>
                 </div>
+            </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn">User
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <li><a class="nav-link" th:href="@{/login}">Log In</a></li>
-                        <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
-                    </div>
+            <div class="dropdown">
+                <button class="dropbtn">User
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <li><a class="nav-link" th:href="@{/login}">Log In</a></li>
+                    <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
                 </div>
+            </div>
 
 
-            </ul>
-        </div>
-    </nav>
-    <div class="login-container">
-        <h1 class="h1-greeting">Enter Credentials</h1>
-        <form th:action="@{/login}" method="post">
-            <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
-            <input type="password" name="password" class="form-control" placeholder="Password" required />
-        <p><input type="submit" value="Login" /></p>
-
-        </form>
+        </ul>
     </div>
+</nav>
+
+<!--Driver Function Section-->
+
+<h1 class="h1-greeting">Driver Functions</h1>
+    <div class="functions-div">
+
+        <h2 class="h2-greeting">Vehicles</h2>
+        <li><a class="nav-link" th:href="@{/check-in-vehicle}">Check In a Vehicle</a></li>
+        <li><a class="nav-link" th:href="@{/check-out-vehicle}">Check Out a Vehicle</a></li>
+        <li><a class="nav-link" th:href="@{/vehicle-status}">Vehicle Status</a></li>
+
+        <h2 class="h2-greeting">Jobs</h2>
+        <li><a class="nav-link" th:href="@{/jobstatus}">Job Status</a></li>
+    </div>
+
+        <li><a class="nav-link" th:href="@{/goodbye}">Log Out</a></li>
+
+
 </body>
+
 </html>
