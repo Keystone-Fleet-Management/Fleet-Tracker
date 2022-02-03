@@ -2,10 +2,12 @@ package com.fleettracker.fleettracker.controllers;
 
 import com.fleettracker.fleettracker.models.Driver;
 import com.fleettracker.fleettracker.models.Jobs;
+import com.fleettracker.fleettracker.models.User;
 import com.fleettracker.fleettracker.models.data.DriverRepository;
 import com.fleettracker.fleettracker.models.data.JobRepository;
 import com.fleettracker.fleettracker.models.data.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.swing.*;
 import javax.validation.Valid;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class JobsController {
 
     @GetMapping("jobstatus")
     public String displayJobStatus(Model model){
+        Driver currentDriver = driverRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Iterable<Jobs> allJobs = jobRepository.findAll();
         ArrayList<Jobs> availableJobs = new ArrayList<>();
         ArrayList<Jobs> activeJobs = new ArrayList<>();
@@ -54,11 +56,13 @@ public class JobsController {
                     availableJobs.add(job);
                 }
             }
-
-
+        if (currentDriver.getJob() == null) {
+            currentDriver.setJob(new Jobs("None", "None","None", "None"));
+        }
         model.addAttribute("activeJobs", activeJobs);
         model.addAttribute("availableJobs", availableJobs);
         model.addAttribute("completedJobs", completedJobs);
+        model.addAttribute("currentDriver", currentDriver);
         return "jobstatus";
     }
 
@@ -71,7 +75,7 @@ public class JobsController {
 
     @PostMapping("jobstatus")
     public String processAcceptJob(@RequestParam int jobId){
-        Driver currentDriver = driverRepository.findById(1).get();
+        Driver currentDriver = driverRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Jobs selectedJob = jobRepository.findById(jobId).get();
 
         if(selectedJob.isActive()){
